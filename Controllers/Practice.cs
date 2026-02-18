@@ -16,6 +16,7 @@ public class PracticeController : ControllerBase
     return Ok(currentTime);
   }
 
+  [HttpGet]
   public IActionResult GetCores()
   {
     return Ok("12");
