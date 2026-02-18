@@ -15,4 +15,9 @@ public class PracticeController : ControllerBase
 
     return Ok(currentTime);
   }
+
+  public IActionResult GetCores()
+  {
+    return Ok("12");
+  }
 }
