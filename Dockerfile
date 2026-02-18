@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 
 WORKDIR /src
 
@@ -18,7 +18,7 @@ RUN dotnet publish "DockerPractice.csproj" -c Release -o /app/publish /p:UseAppH
 
 # Stage 3: Final Runtime
 # Using the 'aspnet' runtime image for a smaller footprint
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
