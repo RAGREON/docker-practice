@@ -9,6 +9,7 @@ public class PracticeController : ControllerBase
   }
 
   [HttpGet]
+  [Route("Time")]
   public IActionResult GetTime()
   {
     var currentTime = DateTime.UtcNow;
@@ -17,6 +18,7 @@ public class PracticeController : ControllerBase
   }
 
   [HttpGet]
+  [Route("Cores")]
   public IActionResult GetCores()
   {
     return Ok("12");
