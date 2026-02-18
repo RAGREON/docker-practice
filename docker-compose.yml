@@ -4,6 +4,7 @@ services:
   web-service:
     build: .
     image: my-image
+    container_name: my-container
     ports:
       - "8080:80"
     environment:
