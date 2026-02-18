@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  web-service:
+    build: .
+    image: my-image
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      # - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=mydb;Username=postgres;Password=postgres
+    restart: always
