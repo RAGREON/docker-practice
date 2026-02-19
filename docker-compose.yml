@@ -17,6 +17,7 @@ services:
 
   db:
     image: postgres
+    container_name: psql-container
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
