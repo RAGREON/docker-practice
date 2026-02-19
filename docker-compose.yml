@@ -28,7 +28,7 @@ services:
       context: .
       target: migration-runner
     image: my-app-migrator 
-    container: migration-container
+    container_name: migration-container
     depends_on: 
       - db
     environment: 
