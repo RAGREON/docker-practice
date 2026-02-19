@@ -1,0 +1,26 @@
+# Stage 1: Build and Publish
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS migration-build
+WORKDIR /src
+
+COPY . .
+
+# Install EF tools
+RUN dotnet tool install --global dotnet-ef --version 9.0.4
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+RUN dotnet build "DockerPractice.csproj" -c Release -o /app/build /p:UseAppHost=false
+
+# Bundle
+RUN dotnet ef migrations bundle \ 
+  --project "DockerPractice.csproj"
+  -o /app/build/migrate \ 
+  --runtime linux-x64 \ 
+  --self-contained \ 
+
+# Stage 2: Runtime 
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS migration-runner
+WORKDIR /app
+
+COPY --from=migration-build /app/build/migrate .
+
+ENTRYPOINT ["./migrate"]
