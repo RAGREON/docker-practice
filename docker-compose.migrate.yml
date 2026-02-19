@@ -1,10 +1,8 @@
 services:
   migrate:
     image: my-app:migrate
-    container_name: migrate-container
-    environment:
-      - DB_STR=Host=postgres-container;Port=5432;Database=mydb;Username=postgres;Password=postgres
-    command: ["--connection", "${DB_STR}"]
+    container: migrate-container
+    command: ["--connection", "${DB_CONN_STR}"] 
     depends_on:
       - db
 
