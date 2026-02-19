@@ -1,7 +1,9 @@
 services:
   web-service:
-    build: .
-    image: my-image
+    build:  
+      context: .
+      target: final
+    image: my-app
     container_name: my-container
     ports:
       - "8080:80"
@@ -22,12 +24,12 @@ services:
       - POSTGRES_DB=mydb
 
   migrate:
-    image: mcr.microsoft.com/dotnet/sdk:9.0
-    working_dir: /src
-    volumes:
-      - .:/src
+    build:
+      context: .
+      target: migration-runner
+    image: my-app-migrator 
+    container: migration-container
     depends_on: 
       - db
-    entrypoint: ["dotnet", "ef", "database", "update"]
     environment: 
       - ConnectionStrings__PG_CONNECTION_STRING=Host=db;Port=5432;Database=mydb;Username=postgres;Password=postgres
