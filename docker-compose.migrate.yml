@@ -3,7 +3,8 @@ services:
     image: my-app:migrate
     container_name: migrate-container
     environment:
-      - ConnectionStrings__PG_CONNECTION_STRING=Host=postgres-container;Port=5432;Database=mydb;Username=postgres;Password=postgres
+      - DB_STR=Host=postgres-container;Port=5432;Database=mydb;Username=postgres;Password=postgres
+    command: ["--connection", "${DB_STR}"]
     depends_on:
       - db
 
