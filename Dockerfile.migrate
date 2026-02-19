@@ -14,7 +14,7 @@ RUN dotnet ef migrations bundle \
   --output /app/migrate \
   --configuration Release \
   --runtime linux-x64 \
-  --self-contained \
+  --self-contained
 
 # Stage 2: Runtime 
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS migration-runner
