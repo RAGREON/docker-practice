@@ -27,7 +27,7 @@ services:
     image: mcr.microsoft.com/dotnet/sdk:9.0
     working_dir: /src
     volumes:
-      - :/src
+      - .:/src
     depends_on: 
       - db
     entrypoint: ["dotnet", "ef", "database", "update"]
