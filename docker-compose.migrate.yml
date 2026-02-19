@@ -1,7 +1,7 @@
 services:
   migrate:
     image: my-app:migrate
-    container: migrate-container
+    container_name: migrate-container
     command: ["--connection", "${DB_CONN_STR}"] 
     depends_on:
       - db
