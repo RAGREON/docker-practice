@@ -12,7 +12,7 @@ RUN dotnet build "DockerPractice.csproj" -c Release -o /app/build /p:UseAppHost=
 
 # Bundle
 RUN dotnet ef migrations bundle \ 
-  --project "DockerPractice.csproj"
+  --project "DockerPractice.csproj" \
   -o /app/build/migrate \ 
   --runtime linux-x64 \ 
   --self-contained \ 
