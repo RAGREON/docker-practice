@@ -24,7 +24,10 @@ services:
       - POSTGRES_DB=mydb
 
   migrate:
-    image: my-image
+    image: mcr.microsoft.com/dotnet/sdk:9.0
+    working_dir: /src
+    volumes:
+      - :/src
     depends_on: 
       - db
     entrypoint: ["dotnet", "ef", "database", "update"]
