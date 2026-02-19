@@ -17,7 +17,7 @@ FROM build AS publish
 RUN dotnet publish "DockerPractice.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Install EF tool and create bundle
-RUN dotnet tool install --global dotnet-ef --version 9.0.0
+RUN dotnet tool install --global dotnet-ef --version 9.0.4
 ENV PATH="$PATH:/root/.dotnet/tools"
 RUN dotnet ef migrations bundle --project "DockerPractice.csproj" \
   -o /app/publish/migrate \
